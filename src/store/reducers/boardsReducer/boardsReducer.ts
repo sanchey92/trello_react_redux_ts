@@ -40,6 +40,13 @@ const boardsReducer: Reducer<any, any> = (state = initialState, action) => {
       return state
     }
 
+    case ActionTypesEnum.ADD_BOARD: {
+      const {title, id} = action.payload;
+      const newID = `board-${id}`
+      const newBoard = {id: newID, title, lists: []};
+      return {...state, [newID]: newBoard}
+    }
+
     default:
       return state
   }
