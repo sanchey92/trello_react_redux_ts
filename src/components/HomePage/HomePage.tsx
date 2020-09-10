@@ -42,7 +42,7 @@ const HomePage: FC = () => {
         <CreateInput
           value={boardTitle}
           type='text'
-          placeholder='enter boards name'
+          placeholder='enter board name'
           onChange={handleInputChange}
         />
       </form>

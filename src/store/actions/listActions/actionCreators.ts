@@ -1,4 +1,4 @@
-import {Dispatch, Action} from "redux";
+import {Action} from "redux";
 import {uuid} from 'uuidv4';
 import ActionTypesEnum from "../ActionTypes.enum";
 import {IEditListTitle} from "./interfaces";
@@ -35,12 +35,12 @@ const deleteList = (listID: string): ThunkAction<void, any, any, Action> => {
 const filterDraggable = (
   droppableIdStart: string,
   droppableIdEnd: string,
-  droppableIndexStart: string,
-  droppableIndexEnd: string,
+  droppableIndexStart: number,
+  droppableIndexEnd: number,
   draggableId: string,
   type: string
-) => {
-  return (dispatch: Dispatch, getState: Function) => {
+): ThunkAction<void, any, any, Action> => {
+  return (dispatch, getState) => {
     const boardID = getState().activeBoard;
     dispatch({
       type: ActionTypesEnum.DRAG_HAPPENED,
