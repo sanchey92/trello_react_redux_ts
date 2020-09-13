@@ -4,7 +4,7 @@ import ActionTypesEnum from "../../actions/ActionTypes.enum";
 const initialState = {
   'board-0': {
     id: 'board-0',
-    lists: ['lists-0'],
+    lists: ['list-0'],
     title: 'test board'
   }
 }
@@ -17,13 +17,15 @@ const boardsReducer: Reducer<any, any> = (state = initialState, action) => {
       const board = state[boardID];
       const boardListID = `list-${id}`;
       board.lists = [...board.lists, boardListID];
+
       return {...state, [boardID]: board}
     }
 
     case ActionTypesEnum.DELETE_LIST: {
       const {listID, boardID} = action.payload;
       const board = state[boardID];
-      board.lists = board.lists.filter((list: any) => list !== listID);
+      board.lists = board.lists.filter((id: any) => id !== listID);
+
       return {...state, [boardID]: board};
     }
 
@@ -35,6 +37,7 @@ const boardsReducer: Reducer<any, any> = (state = initialState, action) => {
       if (type === 'list') {
         const pulledOutList = lists.splice(droppableIndexStart, 1);
         lists.splice(droppableIndexEnd, 0, pulledOutList);
+
         return {...state, [boardID]: board}
       }
       return state
@@ -44,6 +47,7 @@ const boardsReducer: Reducer<any, any> = (state = initialState, action) => {
       const {title, id} = action.payload;
       const newID = `board-${id}`
       const newBoard = {id: newID, title, lists: []};
+
       return {...state, [newID]: newBoard}
     }
 

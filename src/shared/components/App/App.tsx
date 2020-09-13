@@ -1,8 +1,8 @@
 import React, {FC} from "react";
 import {Route} from 'react-router-dom';
 
-import HomePage from "../HomePage/HomePage";
-import Board from "../Board/Board";
+import HomePage from "../../../home/pages/HomePage/HomePage";
+import Board from "../../../board/pages/Board/Board";
 
 const App: FC = () => {
   return (

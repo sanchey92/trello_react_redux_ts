@@ -6,11 +6,11 @@ import {ThunkAction} from "redux-thunk";
 
 const addList = (title: string): ThunkAction<void, any, any, Action> => {
   return (dispatch, getState) => {
-    const boardId = getState().activeBoard;
+    const boardID = getState().activeBoard.id;
     const id = uuid();
     dispatch({
       type: ActionTypesEnum.ADD_LIST,
-      payload: {title, boardId, id}
+      payload: {title, boardID, id}
     })
   }
 }
@@ -24,7 +24,7 @@ const editListTitle = (listID: string, newTitle: string): IEditListTitle => {
 
 const deleteList = (listID: string): ThunkAction<void, any, any, Action> => {
   return (dispatch, getState) => {
-    const boardID = getState().activeBoard;
+    const boardID = getState().activeBoard.id;
     dispatch({
       type: ActionTypesEnum.DELETE_LIST,
       payload: {listID, boardID}
@@ -41,7 +41,7 @@ const filterDraggable = (
   type: string
 ): ThunkAction<void, any, any, Action> => {
   return (dispatch, getState) => {
-    const boardID = getState().activeBoard;
+    const boardID = getState().activeBoard.id;
     dispatch({
       type: ActionTypesEnum.DRAG_HAPPENED,
       payload: {

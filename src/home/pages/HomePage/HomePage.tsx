@@ -2,9 +2,9 @@ import React, {ChangeEvent, FC, FormEvent, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {Link} from 'react-router-dom';
 
-import {addBoard} from "../../store/actions/boardsActions/boardActions";
+import {addBoard} from "../../../store/actions/boardsActions/boardActions";
 import {CreateTitle, CreateInput, HomeContainer, Thumbnails} from "./HomePage.styled";
-import BoardThumbnail from "../BoardThumbnail/BoardThumbnail";
+import BoardThumbnail from "../../components/BoardThumbnail/BoardThumbnail";
 
 const HomePage: FC = () => {
 
@@ -19,7 +19,8 @@ const HomePage: FC = () => {
 
   const clickHandleSubmit = (event: FormEvent): void => {
     event.preventDefault();
-    dispatch(addBoard(boardTitle));
+    if (boardTitle.trim()) dispatch(addBoard(boardTitle));
+    setBoardTitle('');
   }
 
   return (

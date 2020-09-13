@@ -17,6 +17,7 @@ const TitleContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  margin-bottom: 10px;
 `;
 
 const StyledInput = styled.input`
@@ -31,7 +32,7 @@ const StyledInput = styled.input`
 const DeleteButton = styled(Icon)`
   cursor: pointer;
   transition: opacity .3s ease-in-out;
-  opacity: .4;
+  opacity: .2;
   &:hover {
     opacity: .8;
   }

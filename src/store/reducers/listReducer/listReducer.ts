@@ -24,6 +24,14 @@ const listReducer: Reducer<any, any> = (state = initialState, action: any) => {
       return {...state, [`list-${id}`]: newList};
     }
 
+    case ActionTypesEnum.ADD_CARD: {
+      const {listID, id} = action.payload;
+      const list = state[listID];
+      list.cards.push(`card-${id}`);
+
+      return {...state, [listID]: list}
+    }
+
     case ActionTypesEnum.EDIT_LIST_TITLE: {
       const {listID, newTitle} = action.payload;
       const list: any = state[listID];
@@ -52,7 +60,7 @@ const listReducer: Reducer<any, any> = (state = initialState, action: any) => {
       if (droppableIdStart === droppableIdEnd) {
         const list = state[droppableIdStart];
         const card = list.cards.splice(droppableIndexStart, 1);
-        list.card.splice(droppableIndexEnd, 0, ...card);
+        list.cards.splice(droppableIndexEnd, 0, ...card);
         return {...state, [droppableIdStart]: list};
       }
 
